@@ -1,0 +1,180 @@
+:root {
+  --ink: #10251b;
+  --green: #20955b;
+  --muted: #5e6d65;
+  --cream: #f6f7f3;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+button,
+a {
+  font: inherit;
+}
+main > section {
+  scroll-margin-top: 76px;
+}
+.motion-ready .reveal {
+  opacity: 0;
+  transform: translateY(42px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.65, 0.3, 1),
+    transform 0.85s cubic-bezier(0.2, 0.65, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.motion-ready .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.summary .classification {
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.summary .classification b {
+  color: #58d991;
+  letter-spacing: 0.12em;
+  font-size: 0.58rem;
+}
+.summary .classification strong {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #2d654b;
+  color: #bdf1d2;
+  font-size: 0.58rem;
+  white-space: nowrap;
+}
+.hero-visual.is-idle-pulsing .phone-card {
+  animation: phone-nudge 1.8s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.hero-visual.is-idle-pulsing .float-note--top {
+  animation: label-nudge 1.8s 0.12s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.hero-visual.is-idle-pulsing .float-note--bottom {
+  animation: label-nudge 1.8s 0.28s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.hero-visual.is-idle-pulsing .orbit--one {
+  animation: orbit-breathe 1.8s ease-out;
+}
+.hero-visual.is-idle-pulsing .live i {
+  animation: status-pulse 0.9s ease-out 2;
+}
+.hero-visual.decision--connect .decision button:last-child {
+  animation: connect-decision 1.8s ease-out;
+}
+.hero-visual.decision--decline .summary {
+  background: #49362c;
+  border-color: #755848;
+}
+.hero-visual.decision--decline .summary span {
+  background: #694b36;
+  color: #ffe0bd;
+}
+.hero-visual.decision--decline .classification strong {
+  background: #7a542f;
+  color: #ffe0ad;
+}
+.hero-visual.decision--decline .live i {
+  background: #e9a14b;
+}
+.hero-visual.decision--decline .decision button:last-child {
+  background: #2a4d3c;
+  color: #bac9c1;
+}
+.hero-visual.decision--decline .decision .decline {
+  background: #a8464b;
+  animation: decline-decision 1.8s ease-out;
+}
+@keyframes phone-nudge {
+  0%,
+  100% {
+    transform: rotate(1.5deg) translateY(0);
+  }
+  42% {
+    transform: rotate(0.2deg) translateY(-11px);
+  }
+  70% {
+    transform: rotate(2deg) translateY(-4px);
+  }
+}
+@keyframes label-nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  45% {
+    transform: translateY(-9px);
+  }
+  72% {
+    transform: translateY(2px);
+  }
+}
+@keyframes orbit-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  48% {
+    transform: scale(1.045);
+    opacity: 0.55;
+  }
+}
+@keyframes status-pulse {
+  0% {
+    box-shadow: 0 0 0 0 #36d47c55;
+  }
+  100% {
+    box-shadow: 0 0 0 13px #36d47c00;
+  }
+}
+@keyframes connect-decision {
+  0%,
+  100% {
+    box-shadow: none;
+  }
+  38% {
+    transform: scale(1.06);
+    background: #39d982;
+    box-shadow: 0 0 0 8px #39d98222;
+  }
+}
+@keyframes decline-decision {
+  0%,
+  100% {
+    box-shadow: none;
+  }
+  38% {
+    transform: scale(1.06);
+    background: #c94f55;
+    box-shadow: 0 0 0 8px #c94f5522;
+  }
+}
+.testimonials[hidden] { display: none; }
+.testimonial-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; margin-top: 38px; }
+.testimonial-grid article { padding: 28px; border: 1px solid #dce6df; border-radius: 20px; background: #f8faf8; }
+.testimonial-grid img { width: 54px; height: 54px; margin-bottom: 18px; border-radius: 50%; object-fit: cover; background: #dfe9e3; }
+.testimonial-grid blockquote { margin: 0; color: #263c32; font-size: 1.05rem; line-height: 1.65; }.testimonial-grid blockquote::before { content: '“'; color: #2bab69; font-size: 2rem; line-height: 0; }.testimonial-grid article p { margin: 20px 0 0; color: #547064; font-size: .82rem; font-weight: 800; }
+@media (max-width: 800px) { .testimonial-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .motion-ready .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .hero-visual.is-idle-pulsing * {
+    animation: none !important;
+  }
+}

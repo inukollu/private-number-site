@@ -1,0 +1,16 @@
+.waitlist-status {
+  grid-column: 1 / -1;
+  margin: 2px 0 0;
+  color: #fff;
+  text-align: center;
+  font-size: .86rem;
+  font-weight: 700;
+}
+
+.waitlist-status[data-state="error"] { color: #ffe0dc; }
+.waitlist-status[hidden] { display: none; }
+.cta button:disabled {
+  cursor: wait;
+  opacity: .7;
+  transform: none;
+}
